@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_view_model_example/service_locator.dart';
 
@@ -10,7 +11,7 @@ class AppDrawer extends HookConsumerWidget {
         children: [
           Container(
             color: Colors.blue,
-            child: DrawerHeader(
+            child: const DrawerHeader(
               child: Center(
                 child: Text(
                   "Riverpod ViewModel Example",
@@ -39,18 +40,20 @@ class _RouterTile extends HookConsumerWidget {
   final String title;
   final String route;
   final Widget icon;
+  
   _RouterTile({
     required this.title,
     required this.route,
     required this.icon,
   });
+ 
   @override
+  
   Widget build(BuildContext context, WidgetRef ref) {
+    final String location = App.router.getCurrentLocation();
     return ListTile(
       leading: icon,
-      tileColor: App.router.goRouter.location.contains(route)
-          ? Theme.of(context).highlightColor
-          : null,
+      tileColor: location.contains(route) ? Theme.of(context).highlightColor : null,
       title: Text(title),
       onTap: () {
         App.router.go(route);

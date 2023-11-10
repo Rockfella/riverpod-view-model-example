@@ -7,7 +7,14 @@ class AppRouter {
   void go(String route) {
     goRouter.go(route);
   }
-
+String getCurrentLocation() {
+    final RouteMatch lastMatch =
+        goRouter.routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : goRouter.routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
   GoRouter goRouter = GoRouter(
     initialLocation: "/counter",
     routes: [
@@ -21,6 +28,8 @@ class AppRouter {
       ),
     ],
   );
+
+  
   static Page<void> _counter(context, GoRouterState state) {
     return NoTransitionPage<void>(
       key: state.pageKey,
