@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_view_model_example/modules/counter/counter_screen.dart';
 import 'package:riverpod_view_model_example/modules/preferences/preferences_screen.dart';
-
+import 'package:riverpod_view_model_example/modules/sittostand/sittostand_screen.dart';
 class AppRouter {
   void go(String route) {
     goRouter.go(route);
@@ -16,7 +16,7 @@ String getCurrentLocation() {
     return matchList.uri.toString();
   }
   GoRouter goRouter = GoRouter(
-    initialLocation: "/counter",
+    initialLocation: "/sittostand",
     routes: [
       GoRoute(
         path: "/counter",
@@ -25,6 +25,10 @@ String getCurrentLocation() {
       GoRoute(
         path: "/preferences",
         pageBuilder: _preferences,
+      ),
+       GoRoute(
+        path: "/sittostand",
+        pageBuilder: _sittostand,
       ),
     ],
   );
@@ -41,6 +45,12 @@ String getCurrentLocation() {
     return NoTransitionPage<void>(
       key: state.pageKey,
       child: PreferencesScreen(),
+    );
+  }
+  static Page<void> _sittostand(context, GoRouterState state) {
+    return NoTransitionPage<void>(
+      key: state.pageKey,
+      child: SitToStandScreen(),
     );
   }
 }

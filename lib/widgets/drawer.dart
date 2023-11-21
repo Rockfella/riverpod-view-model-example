@@ -10,25 +10,30 @@ class AppDrawer extends HookConsumerWidget {
       child: ListView(
         children: [
           Container(
-            color: Colors.blue,
+            color: Color.fromARGB(244, 24, 145, 172),
             child: const DrawerHeader(
               child: Center(
                 child: Text(
-                  "Riverpod ViewModel Example",
+                  "AMM UPPSALA",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
           ),
-          _RouterTile(
-            title: "Counter",
-            route: "/counter",
-            icon: Icon(Icons.numbers),
-          ),
+          //_RouterTile(
+          //  title: "Counter",
+          //  route: "/counter",
+          //  icon: Icon(Icons.numbers),
+          //),
           _RouterTile(
             title: "Preferences",
             route: "/preferences",
             icon: Icon(Icons.settings),
+          ),
+              _RouterTile(
+            title: "Sit to Stand - SCAPIS",
+            route: "/sittostand",
+            icon: Icon(Icons.chair),
           ),
         ],
       ),

@@ -8,6 +8,24 @@ void main() {
   App.registerSingletons();
   runApp(const MyApp());
 }
+final ThemeData lightTheme = ThemeData(
+  colorScheme: const ColorScheme.light(
+    primary: Color.fromARGB(244, 24, 145, 172), // Primary color for the app
+   
+    secondary: Colors.amber, // Secondary color for the app
+    
+    surface: Colors.white, // Background color for cards, dialogs, etc.
+    background: Color.fromARGB(255, 255, 255, 255), // Background color for the app's scaffold
+    error: Colors.red, // Color to use for input validation errors, etc.
+    onPrimary: Colors.white, // Text color for components on primary color
+    onSecondary: Colors.black, // Text color for components on secondary color
+    onSurface: Colors.black, // Text color for components on surface color
+    onBackground: Colors.black, // Text color for components on background color
+    onError: Colors.white, // Text color for components on error color
+    brightness: Brightness.light, // Overall theme brightness (light)
+  ),
+  // Other theme properties...
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,10 +39,10 @@ class MyApp extends StatelessWidget {
 
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            title: 'Riverpod ViewModel Example',
+            title: 'Sit to Stand',
             theme: isDarkMode
                 ? ThemeData(brightness: Brightness.dark)
-                : ThemeData(brightness: Brightness.light),
+                : lightTheme,
             routeInformationParser: App.router.goRouter.routeInformationParser,
             routerDelegate: App.router.goRouter.routerDelegate,
             routeInformationProvider:
